@@ -20,7 +20,7 @@ Include screenshots of your app here.
 To install the app, simply clone the repository and open it in Xcode:
 
 ```
-git clone <repository-url>
+git clone imsudhirpawar/To-Do-List-iOS-App-ListaGram
 ```
 
 ## Usage
