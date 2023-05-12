@@ -10,7 +10,7 @@ import FirebaseFirestoreSwift
 
 struct ToDoListView: View {
     
-    @StateObject var viewModel = ToDoListView_ViewModel()
+    @StateObject var viewModel: ToDoListView_ViewModel
     @FirestoreQuery var items: [ToDoListItem]
     
     
@@ -19,10 +19,15 @@ struct ToDoListView: View {
         
         self._items = FirestoreQuery(
             collectionPath: "users/\(userId)/todos")
+        
+        self._viewModel = StateObject(
+            wrappedValue: ToDoListView_ViewModel(userId: userId)
+        )
     }
     
     var body: some View {
         NavigationView {
+            
             VStack{
                 
                 List(items){ item in
@@ -35,9 +40,11 @@ struct ToDoListView: View {
                                 viewModel.delete(id: item.id)
                             } label: {
                                 Text("Delete")
-                                    .foregroundColor(.red)
+                                    
 
                             }
+                            .tint(.red)
+                            
 
 
                         }
@@ -47,17 +54,32 @@ struct ToDoListView: View {
                 
             }
             
-            .navigationTitle("To Do List")
             .toolbar {
-                Button {
-                        // Action
-                    viewModel.showingSingleItemView = true
-                    
-                } label: {
-                    Image(systemName: "plus")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text ("To Do List")
+                        .font (.system(.largeTitle, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundStyle(LinearGradient(
+                            colors: [.red, .orange,
+                                     .yellow],
+                            startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
                 }
-                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                            // Action
+                        viewModel.showingSingleItemView = true
+                        
+                    } label: {
+                        Image(systemName: "square.and.pencil")
+                            
+                    }
+                    
+                }
             }
+            
+            .foregroundColor(.mint)
+            
             .sheet(isPresented: $viewModel.showingSingleItemView) {
                 SingleItemView(newItemPresented: $viewModel.showingSingleItemView )
             }

@@ -18,8 +18,8 @@ var isDone: Bool
 
 
 
-mutating func setDone(_ state: Bool) {
-    isDone = state
+    mutating func setDone(_ state: Bool) {
+     isDone = state
 }
 
 }

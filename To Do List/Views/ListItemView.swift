@@ -12,43 +12,44 @@ import SwiftUI
 struct ListItemView: View {
     
     @StateObject var viewModel = ProfileView_ViewModel()
-    let item: ToDoListItem
+    
+    var item: ToDoListItem
     
     var body: some View {
         
-   
+        HStack(spacing: 20){
             
-            
-            HStack{
+            Button{
+                viewModel.toggleIsDone(item: item)
                 
-                VStack(alignment: .leading){
-                    
-                    Text(item.title)
-                        .font(.headline)
-                        .fontDesign(.rounded)
-                        .bold()
-                        .foregroundColor(.purple)
-                        .padding(.bottom, 0.3)
-                    Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
-                        .foregroundColor(.brown)
-                        //                    .font(.subheadline)
-                        .bold()
-                        .font(.system(size: 15))
-                    
-                }
-                Spacer()
                 
-                Button{
-                    
-                    viewModel.toggleIsDone(item: item)
-                    
-                }label: {
-                    Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
-                    
-                }
+            }label: {
+                Image(systemName: item.isDone ? "checkmark.circle.fill" : "circle")
+                    .font(.system(size: 20))
+                
             }
             
+            
+                //                Spacer()
+            
+            VStack(alignment: .leading){
+                
+                Text(item.title)
+                    .font(.headline)
+                    .fontDesign(.rounded)
+                    .bold()
+                    .foregroundColor(.purple)
+                    .padding(.bottom, 0.3)
+                Text("\(Date(timeIntervalSince1970: item.dueDate).formatted(date: .abbreviated, time: .shortened))")
+                    .foregroundColor(.brown)
+                    //                    .font(.subheadline)
+                    .bold()
+                    .font(.system(size: 15))
+                
+            }
         }
+        
+    }
     
 }
 

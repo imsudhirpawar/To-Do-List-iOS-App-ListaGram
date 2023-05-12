@@ -14,7 +14,8 @@ class SingleItemView_ViewModel: ObservableObject {
     @Published var title = ""
     @Published var desc = ""
     @Published var showAlert = false
-    @Published var duedate = Date()  
+    @Published var duedate = Date()
+    
     
     init() {
         
