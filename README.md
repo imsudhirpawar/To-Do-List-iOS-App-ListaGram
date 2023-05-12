@@ -40,6 +40,22 @@ To install the app, simply clone the repository and open it in Xcode:
 git clone imsudhirpawar/To-Do-List-iOS-App-ListaGram
 ```
 
+## Firestore Integration
+
+This app uses Firebase Firestore to store and retrieve data. Before running the app, you'll need to set up a Firestore database and configure your project with the appropriate API keys and credentials. Here's how to get started:
+
+1. Create a new Firebase project or use an existing one.
+2. In the Firebase console, select your project and click on "Firestore" in the left-hand menu.
+3. Click "Create Database" to create a new Firestore database.
+4. Choose a location for your database and select "Start in test mode".
+5. Once your database is created, click on "Project Settings" in the top right corner of the console.
+6. Under the "General" tab, scroll down to the "Your apps" section and select your iOS app.
+7. Follow the instructions to download the `GoogleService-Info.plist` file and add it to your Xcode project.
+8. Install the necessary Firebase pods in your project and configure the Firebase SDK with your API keys and credentials. See the [Firebase documentation](https://firebase.google.com/docs/ios/setup) for detailed instructions.
+
+Once you've completed these steps, you should be able to run the app and interact with your Firestore database. If you run into any issues, please refer to the Firebase documentation or open an issue in this repository.
+
+
 ## Usage
 
 To use the app, open it in Xcode and run it on a simulator or a connected device.
